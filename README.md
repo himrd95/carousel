@@ -28,4 +28,4 @@ width | Number(px) | 500
 height | Number(px) | 230
 
 ### Source code
-
+[Github](https://github.com/himrd95/carousel)
