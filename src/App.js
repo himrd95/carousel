@@ -12,12 +12,7 @@ const images = [
 function App() {
 	return (
 		<div className='App'>
-			<Carousel
-				images={images}
-				buttons={false}
-				width={400}
-				delay={1000}
-			/>
+			<Carousel images={images} buttons={false} width={400} />
 		</div>
 	);
 }
