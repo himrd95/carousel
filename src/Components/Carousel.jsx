@@ -1,14 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './Carousel.module.css';
 
-const Carousel = ({ images, delay, buttons, width, height }) => {
-	const [newDelay, setNewDelay] = useState(delay ? delay : 2000);
+const Carousel = ({
+	images,
+	delay = 2000,
+	buttons = true,
+	width = 500,
+	height = 230,
+}) => {
 	const [count, setCount] = useState(0);
 	const translateRef = useRef();
 	const [timing, setTiming] = useState('');
-	const newButtons = buttons ? buttons : true;
-	const newWidth = width ? width : 500;
-	const newHeight = height ? height : 230;
 
 	const handleClick = (val) => {
 		setTiming(clearTimeout(timing));
@@ -46,7 +48,7 @@ const Carousel = ({ images, delay, buttons, width, height }) => {
 			setTimeout(() => {
 				setCount(count + 1);
 				handleClick('forward');
-			}, newDelay),
+			}, delay),
 		);
 	};
 	useEffect(setTimer, [count]);
@@ -54,30 +56,22 @@ const Carousel = ({ images, delay, buttons, width, height }) => {
 	return (
 		<div
 			className={styles.main}
-			style={{ width: `${newWidth}px`, height: `${newHeight}px` }}
+			style={{ width: `${width}px`, height: `${height}px` }}
 		>
 			<div className={styles.container}>
-				<div
-					ref={translateRef}
-					style={{
-						display: 'flex',
-						width: 'fit-content',
-						height: '100%',
-						transition: '.3s',
-					}}
-				>
+				<div ref={translateRef} className={styles.imageContainer}>
 					{images?.map((image) => (
 						<img
 							style={{
-								width: `${newWidth}px`,
-								height: `${newHeight}px`,
+								width: `${width}px`,
+								height: `${height}px`,
 							}}
 							src={image}
-							alt=''
+							alt={image}
 						/>
 					))}
 				</div>
-				{newButtons && (
+				{buttons && (
 					<div className={styles.buttons}>
 						<button
 							className={styles.leftBtn}

@@ -8,6 +8,12 @@
 	height: 100%;
 	width: 100%;
 }
+.imageContainer {
+	display: flex;
+	width: fit-content;
+	height: 100%;
+	transition: 0.3s;
+}
 
 .buttons button {
 	width: fit-content;
